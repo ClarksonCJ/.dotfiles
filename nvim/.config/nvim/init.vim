@@ -32,6 +32,7 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
+" Plug 'kosayoda/nvim-lightbulb'
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'L3MON4D3/LuaSnip'
@@ -39,6 +40,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 " Neovim Tree shitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'romgrk/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
 
 
@@ -69,7 +71,7 @@ Plug 'mattn/emmet-vim' " provides support for expanding abbreviations similar to
 " json
 Plug 'elzr/vim-json' " distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly, support in polyglot
 
-
+Plug 'numToStr/Comment.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
@@ -119,6 +121,7 @@ let &runtimepath.=',' . expand("$HOME") . '/personal/refactoring.nvim/master'
 
 lua require("theprimeagen")
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }, autotag = { enable = true } }
+lua require("Comment").setup()
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 
@@ -235,8 +238,7 @@ augroup END
 
 augroup THE_PRIMEAGEN
     autocmd!
-    " autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
-    autocmd BufWritePre * undojoin | Neoformat
+    autocmd BufWritePre lua,cpp,c,cxx,cc,go,rs,js,ts,rb,py, Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END
