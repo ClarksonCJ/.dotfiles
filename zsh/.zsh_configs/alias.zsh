@@ -4,9 +4,9 @@ alias cppcompile='c++ -std=c++11 -stdlib=libc++'
 alias vim=nvim
 alias vi=nvim
 alias pwgen="pwgen -y 15"
-alias ls=exa
 alias bazel=bazelisk
 alias grep="rg"
+alias pbcopy="xclip -sel clip"
 
 source <(kubectl completion zsh)
 alias k=kubectl
@@ -17,16 +17,17 @@ alias curl=curlie
 alias disable_screen='xrandr --output DP-3 --off'
 alias enable_screen='autorandr --change'
 
-## Ls Aliases (copied from common-aliases)
-alias l='ls -lFh'     #size,show type,human readable
-alias la='ls -lAFh'   #long list,show almost all,show type,human readable
-alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
-alias ll='ls -l'      #long list
-alias ldot='ls -ld .*'
-alias lS='ls -1FSsh'
-alias lart='ls -1Fcart'
-alias lrt='ls -1Fcrt'
+alias ls='exa' # just replace ls by exa and allow all other exa arguments
+alias l='ls -lbF' #   list, size, type
+alias ll='ls -la' # long, all
+alias llm='ll --sort=modified' # list, long, sort by modification date
+alias la='ls -lbhHigUmuSa' # all list
+alias lx='ls -lbhHigUmuSa@' # all list and extended
+alias tree='exa --tree' # tree view
+alias lS='exa -1' # one column by just names
 
 # Kali Aliases
 alias ungron="gron --ungron"
+
+# git overrides
+alias gz="git cz"
