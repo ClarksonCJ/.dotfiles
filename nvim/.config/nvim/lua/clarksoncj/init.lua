@@ -3,6 +3,7 @@ require("clarksoncj.packer")
 require("clarksoncj.neogit")
 require("clarksoncj.debugger")
 require("clarksoncj.rtp")
+require("clarksoncj.devcontainer")
 
 local augroup = vim.api.nvim_create_augroup
 clarksoncjGroup = augroup('clarksoncj', {})

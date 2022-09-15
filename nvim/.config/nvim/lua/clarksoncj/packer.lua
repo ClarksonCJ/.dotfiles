@@ -70,6 +70,9 @@ return require("packer").startup(function()
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
 
+    -- devcontainers
+    use('https://codeberg.org/esensar/nvim-dev-container')
+
 	--[[
     --
 	-- Lazy loading:
