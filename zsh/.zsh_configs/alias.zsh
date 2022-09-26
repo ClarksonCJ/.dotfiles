@@ -12,7 +12,7 @@ source <(kubectl completion zsh)
 alias k=kubectl
 complete -F __start_kubectl k
 
-alias cat=batcat
+alias cat=bat
 alias curl=curlie
 alias disable_screen='xrandr --output DP-3 --off'
 alias enable_screen='autorandr --change'
@@ -31,3 +31,6 @@ alias ungron="gron --ungron"
 
 # git overrides
 alias gz="git cz"
+
+# ripgrep Aliases
+alias rgf='rg --files | rg'

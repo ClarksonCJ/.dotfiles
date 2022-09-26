@@ -3,9 +3,10 @@ require("clarksoncj.packer")
 require("clarksoncj.neogit")
 require("clarksoncj.debugger")
 require("clarksoncj.rtp")
+require("clarksoncj.evil_line")
 
 local augroup = vim.api.nvim_create_augroup
-clarksoncjGroup = augroup('clarksoncj', {})
+ClarksoncjGroup = augroup('clarksoncj', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -26,7 +27,7 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufEnter", "BufWinEnter", "TabEnter"}, {
-    group = clarksoncjGroup,
+    group = ClarksoncjGroup,
     pattern = "*.rs",
     callback = function()
         require("lsp_extensions").inlay_hints{}
@@ -34,9 +35,17 @@ autocmd({"BufEnter", "BufWinEnter", "TabEnter"}, {
 })
 
 autocmd({"BufWritePre"}, {
-    group = clarksoncjGroup,
+    group = ClarksoncjGroup,
     pattern = "*",
     command = "%s/\\s\\+$//e",
+})
+
+autocmd({"BufWritePre"}, {
+    group = ClarksoncjGroup,
+    pattern = "*.go",
+    callback = function()
+        require('go.format').gofmt()
+    end
 })
 
 vim.g.netrw_browse_split = 0

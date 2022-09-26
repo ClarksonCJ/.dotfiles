@@ -17,12 +17,6 @@ nnoremap("N", "Nzzzv")
 nnoremap("J", "mzJ`z")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
--- nnoremap("<leader>vwm", function()
---     require("vim-with-me").StartVimWithMe()
--- end)
--- nnoremap("<leader>svwm", function()
---     require("vim-with-me").StopVimWithMe()
--- end)
 
 -- greatest remap ever
 xnoremap("<leader>p", "\"_dP")
@@ -33,8 +27,6 @@ vnoremap("<leader>y", "\"+y")
 nmap("<leader>Y", "\"+Y")
 
 nnoremap("<leader>d", "\"_d")
-vnoremap("<leader>d", "\"_d")
-
 vnoremap("<leader>d", "\"_d")
 
 -- This is going to get me cancelled

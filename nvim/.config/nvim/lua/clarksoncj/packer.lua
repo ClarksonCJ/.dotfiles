@@ -70,6 +70,10 @@ return require("packer").startup(function()
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
 
+    -- Golang Plugins
+    use("ray-x/go.nvim")
+    use("ray-x/guihua.lua")
+
 	--[[
     --
 	-- Lazy loading:
