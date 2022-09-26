@@ -74,6 +74,9 @@ return require("packer").startup(function()
     use("ray-x/go.nvim")
     use("ray-x/guihua.lua")
 
+    -- devcontainers
+    use('https://codeberg.org/esensar/nvim-dev-container')
+
 	--[[
     --
 	-- Lazy loading:
