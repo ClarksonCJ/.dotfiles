@@ -240,7 +240,7 @@ set $m2 #FFF0E0
 # Startup programs
 exec_always --no-startup-id autorandr --change
 exec --no-startup-id dunst
-exec_always --no-startup-id $HOME/.config/polybar/launch.sj
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id clipit &;
 exec_always feh --bg-scale /home/chris/Pictures/cityscape.jpeg
