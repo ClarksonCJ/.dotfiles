@@ -1,6 +1,6 @@
 local ensure_packer = function()
     local fn = vim.fn
-    local install_path = os.getenv('HOME')..'/.local/share/nvim//site/pack/packer/start/packer.nvim'
+    local install_path = os.getenv('HOME')..'/.local/share/nvim/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
         fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
         vim.cmd [[packadd packer.nvim]]
@@ -41,13 +41,6 @@ return require("packer").startup(function()
     use("simrat39/symbols-outline.nvim")
     use("L3MON4D3/LuaSnip")
     use("saadparwaiz1/cmp_luasnip")
-
-    -- Testing out jupyter ascending
-    --use('untitled-ai/jupyter_ascending.vim')
-    --use('bfredl/nvim-ipy')
-    --use('hkupty/iron.nvim')
-    --use('GCBallesteros/jupytext.vim')
-    --use('GCBallesteros/vim-textobj-hydrogen')
 
     -- Primeagen doesn"t create lodash
     use("ThePrimeagen/git-worktree.nvim")
