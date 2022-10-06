@@ -43,11 +43,11 @@ return require("packer").startup(function()
     use("saadparwaiz1/cmp_luasnip")
 
     -- Testing out jupyter ascending
-    use('untitled-ai/jupyter_ascending.vim')
-    use('bfredl/nvim-ipy')
-    use('hkupty/iron.nvim')
-    use('GCBallesteros/jupytext.vim')
-    use('GCBallesteros/vim-textobj-hydrogen')
+    --use('untitled-ai/jupyter_ascending.vim')
+    --use('bfredl/nvim-ipy')
+    --use('hkupty/iron.nvim')
+    --use('GCBallesteros/jupytext.vim')
+    --use('GCBallesteros/vim-textobj-hydrogen')
 
     -- Primeagen doesn"t create lodash
     use("ThePrimeagen/git-worktree.nvim")

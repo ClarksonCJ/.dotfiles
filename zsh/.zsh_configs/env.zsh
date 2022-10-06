@@ -3,11 +3,11 @@
 CONFIG_DIR=$HOME/.zsh_configs
 
 # Source shell files to setup environment
+[ -f $CONFIG_DIR/local_env.zsh ] && source $CONFIG_DIR/local_env.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f $CONFIG_DIR/functions.zsh ] && source $CONFIG_DIR/functions.zsh
 [ -f $CONFIG_DIR/alias.zsh ] && source $CONFIG_DIR/alias.zsh
 [ -f $CONFIG_DIR/local.zsh ] && source $CONFIG_DIR/local.zsh
-[ -f $CONFIG_DIR/local_env.zsh ] && source $CONFIG_DIR/local_env.zsh
 [ -f $HOME/.sdkman/bin/sdkman-init.sh ] && source $HOME/.sdkman/bin/sdkman-init.sh
 
 # Execute Env Setup scripts

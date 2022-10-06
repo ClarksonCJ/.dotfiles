@@ -104,10 +104,20 @@ _G.packer_plugins = {
     path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
     url = "https://github.com/ThePrimeagen/git-worktree.nvim"
   },
+  ["go.nvim"] = {
+    loaded = true,
+    path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/go.nvim",
+    url = "https://github.com/ray-x/go.nvim"
+  },
   gruvbox = {
     loaded = true,
     path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
+  },
+  ["guihua.lua"] = {
+    loaded = true,
+    path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/guihua.lua",
+    url = "https://github.com/ray-x/guihua.lua"
   },
   harpoon = {
     loaded = true,
@@ -178,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
     url = "https://github.com/theHamsta/nvim-dap-virtual-text"
+  },
+  ["nvim-dev-container"] = {
+    loaded = true,
+    path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/nvim-dev-container",
+    url = "https://codeberg.org/esensar/nvim-dev-container"
   },
   ["nvim-ipy"] = {
     loaded = true,
