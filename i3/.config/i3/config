@@ -1,9 +1,6 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 for_window [class="^.*"] border pixel 0
-smart_gaps on
-gaps inner 10
-gaps outer 5
 
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
@@ -51,7 +48,7 @@ bindsym $mod+x exec $terminator
 # Custom bindsyms
 bindsym $mod+p exec ~/.config/i3/bin/logout
 bindsym $mod+l exec i3lock -i /usr/share/backgrounds/ubuntu-default-greyscale-wallpaper.png
-bindsym $mod+c exec brave-browser
+bindsym $mod+c exec google-chrome
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+f exec /home/chris/.config/i3/bin/rofifinder
 bindsym $mod+Shift+b exec $screencast
@@ -238,15 +235,16 @@ set $m1 #808080
 set $m2 #FFF0E0
 
 # Startup programs
+exec_always --no-startup-id $HOME/.screenlayout/home.sh
 exec_always --no-startup-id autorandr --change
 exec --no-startup-id dunst
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id compton --config ~/.config/compton.conf -b
+# exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id clipit &;
-exec_always feh --bg-scale /home/chris/Pictures/cityscape.jpeg
+# exec_always feh --bg-scale /home/chris/Pictures/cityscape.jpeg
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id slack
-exec_always --no-startup-id discord
+# exec_always --no-startup-id discord
 exec_always --no-startup-id /usr/bin/gimp
 exec_always --no-startup-id /snap/bin/zoom-client
 exec_always --no-startup-id /usr/bin/blueman-manager
@@ -254,7 +252,6 @@ exec_always --no-startup-id /usr/bin/blueman-manager
 # Bind App to workspace
 # Check class by using xprop command
 assign [class="(?i)google-chrome"] $ws1
-assign [class="(?i)brave-browser"] $ws1
 assign [class="(?i)Firefox"] $ws1
 assign [class="(?i)terminator"] $ws2
 assign [class="(?i)code"] $ws2
