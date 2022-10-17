@@ -7,7 +7,7 @@ require("clarksoncj.evil_line")
 require("clarksoncj.devcontainer")
 
 local augroup = vim.api.nvim_create_augroup
-ClarksoncjGroup = augroup('clarksoncj', {})
+local ClarksoncjGroup = augroup('clarksoncj', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -25,14 +25,6 @@ autocmd('TextYankPost', {
             timeout = 40,
         })
     end,
-})
-
-autocmd({"BufEnter", "BufWinEnter", "TabEnter"}, {
-    group = ClarksoncjGroup,
-    pattern = "*.rs",
-    callback = function()
-        require("lsp_extensions").inlay_hints{}
-    end
 })
 
 autocmd({"BufWritePre"}, {
