@@ -31,6 +31,26 @@ return require("packer").startup(function()
 
     -- All the things
     use("neovim/nvim-lspconfig")
+    use("simrat39/inlay-hints.nvim")
+    use ({
+        "neovim/nvim-lspconfig",
+        opt = true,
+        event = { "BufReadPre" },
+        wants = {
+            "inlay-hints.nvim",
+        },
+        config = function()
+            require("config.lsp").setup()
+        end,
+        requires = {
+            {
+                "simrat39/inlay-hints.nvim",
+                config = function()
+                    require("inlay-hints").setup()
+                end,
+            },
+        },
+    })
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/nvim-cmp")
@@ -67,8 +87,12 @@ return require("packer").startup(function()
     use("ray-x/go.nvim")
     use("ray-x/guihua.lua")
 
+    -- Rust Plugins
+    use("simrat39/rust-tools.nvim")
+
     -- devcontainers
     use('https://codeberg.org/esensar/nvim-dev-container')
+
 
 	--[[
     --
