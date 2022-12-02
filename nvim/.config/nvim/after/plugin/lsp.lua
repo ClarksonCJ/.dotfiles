@@ -281,6 +281,8 @@ require 'go'.setup({
   dap_debug = true,
 })
 
+require("inlay-hints").setup(config())
+
 require("rust-tools").setup({
     tools = {
         -- executor = require("rust-tools/executors").toggleterm,

@@ -42,9 +42,3 @@ end)
 nnoremap("<leader>gm", function()
     require('telescope').extensions.git_worktree.create_git_worktree()
 end)
-nnoremap("<leader>td", function()
-    require('clarksoncj.telescope').dev()
-end)
-
-
-

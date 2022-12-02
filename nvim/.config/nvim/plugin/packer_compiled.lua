@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/chris/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/chris/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -106,17 +111,12 @@ _G.packer_plugins = {
   },
   ["go.nvim"] = {
     loaded = true,
-    path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/go.nvim",
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
-  },
-  gruvbox = {
-    loaded = true,
-    path = "/home/chris/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/gruvbox-community/gruvbox"
   },
   ["guihua.lua"] = {
     loaded = true,
-    path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/guihua.lua",
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/guihua.lua",
     url = "https://github.com/ray-x/guihua.lua"
   },
   harpoon = {
@@ -124,20 +124,11 @@ _G.packer_plugins = {
     path = "/home/chris/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
-  ["iron.nvim"] = {
+  ["inlay-hints.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16inlay-hints\frequire\0" },
     loaded = true,
-    path = "/home/chris/.local/share/nvim/site/pack/packer/start/iron.nvim",
-    url = "https://github.com/hkupty/iron.nvim"
-  },
-  ["jupyter_ascending.vim"] = {
-    loaded = true,
-    path = "/home/chris/.local/share/nvim/site/pack/packer/start/jupyter_ascending.vim",
-    url = "https://github.com/untitled-ai/jupyter_ascending.vim"
-  },
-  ["jupytext.vim"] = {
-    loaded = true,
-    path = "/home/chris/.local/share/nvim/site/pack/packer/start/jupytext.vim",
-    url = "https://github.com/GCBallesteros/jupytext.vim"
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/inlay-hints.nvim",
+    url = "https://github.com/simrat39/inlay-hints.nvim"
   },
   ["lsp_extensions.nvim"] = {
     loaded = true,
@@ -158,6 +149,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/chris/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
   },
   neoformat = {
     loaded = true,
@@ -191,18 +187,18 @@ _G.packer_plugins = {
   },
   ["nvim-dev-container"] = {
     loaded = true,
-    path = "/home/chrisclarkson/.local/share/nvim/site/pack/packer/start/nvim-dev-container",
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/nvim-dev-container",
     url = "https://codeberg.org/esensar/nvim-dev-container"
-  },
-  ["nvim-ipy"] = {
-    loaded = true,
-    path = "/home/chris/.local/share/nvim/site/pack/packer/start/nvim-ipy",
-    url = "https://github.com/bfredl/nvim-ipy"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/chris/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -215,9 +211,8 @@ _G.packer_plugins = {
     url = "https://github.com/romgrk/nvim-treesitter-context"
   },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/chris/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    loaded = true,
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
@@ -240,6 +235,11 @@ _G.packer_plugins = {
     path = "/home/chris/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
+  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/home/chris/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
@@ -260,14 +260,23 @@ _G.packer_plugins = {
     path = "/home/chris/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
-  ["vim-textobj-hydrogen"] = {
+  ["vim-bbye"] = {
     loaded = true,
-    path = "/home/chris/.local/share/nvim/site/pack/packer/start/vim-textobj-hydrogen",
-    url = "https://github.com/GCBallesteros/vim-textobj-hydrogen"
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/vim-bbye",
+    url = "https://github.com/moll/vim-bbye"
+  },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "/home/chris/.local/share/nvim/site/pack/packer/start/vim-be-good",
+    url = "https://github.com/ThePrimeagen/vim-be-good"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: inlay-hints.nvim
+time([[Config for inlay-hints.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16inlay-hints\frequire\0", "config", "inlay-hints.nvim")
+time([[Config for inlay-hints.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
