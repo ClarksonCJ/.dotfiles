@@ -30,4 +30,4 @@ nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
 inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
 
 nnoremap("<leader>ihs", function() require('rust-tools').inlay_hints.set() end)
-nnoremap("<leader>ihu", function() require('rust-tools').inlay_hints.unset() end)
+nnoremap("<leader>ihu", function() require('rust-rools').inlay_hints.unset() end)

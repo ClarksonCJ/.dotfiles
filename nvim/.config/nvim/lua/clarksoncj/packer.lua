@@ -2,9 +2,9 @@ local ensure_packer = function()
     local fn = vim.fn
     local install_path = os.getenv('HOME')..'/.local/share/nvim/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-        vim.cmd [[packadd packer.nvim]]
-        return true
+	fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	vim.cmd [[packadd packer.nvim]]
+	return true
     end
     return false
 end
@@ -12,7 +12,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 
-return require("packer").startup(function()
+return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     use("sbdchd/neoformat")
 
@@ -23,31 +23,47 @@ return require("packer").startup(function()
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
     use("nvim-telescope/telescope.nvim")
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
     use("kyazdani42/nvim-web-devicons")
 
     use({
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	'nvim-lualine/lualine.nvim',
+	requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     })
 
+    use('lukas-reineke/indent-blankline.nvim') -- Add indentation guides even on blank lines
+    use('numToStr/Comment.nvim') -- "gc" to comment visual regions/lines
+    use('tpope/vim-sleuth') -- Detect tabstop and shiftwidth automatically
+    use('tpope/vim-fugitive')
+    use('tpope/vim-rhubarb')
+    use('lewis6991/gitsigns.nvim')
+
+
     -- All the things
-    use("neovim/nvim-lspconfig")
-    use({
-        "simrat39/inlay-hints.nvim",
-        config = function()
-            require("inlay-hints").setup()
-        end,
-    })
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/nvim-cmp")
+    use {
+	'VonHeikemen/lsp-zero.nvim',
+	requires = {
+	    -- LSP Support
+	    {'neovim/nvim-lspconfig'},
+	    {'williamboman/mason.nvim'},
+	    {'williamboman/mason-lspconfig.nvim'},
+
+	    -- Autocompletion
+	    {'hrsh7th/nvim-cmp'},
+	    {'hrsh7th/cmp-buffer'},
+	    {'hrsh7th/cmp-path'},
+	    {'saadparwaiz1/cmp_luasnip'},
+	    {'hrsh7th/cmp-nvim-lsp'},
+	    {'hrsh7th/cmp-nvim-lua'},
+
+	    -- Snippets
+	    {'L3MON4D3/LuaSnip'},
+	    {'rafamadriz/friendly-snippets'},
+	    {"simrat39/symbols-outline.nvim"},
+	}
+    }
+
     use("tzachar/cmp-tabnine", { run = "./install.sh" })
-    use("onsails/lspkind-nvim")
-    use("nvim-lua/lsp_extensions.nvim")
-    use("glepnir/lspsaga.nvim")
-    use("simrat39/symbols-outline.nvim")
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
 
     -- Primeagen doesn"t create lodash
     use("ThePrimeagen/git-worktree.nvim")
@@ -56,8 +72,8 @@ return require("packer").startup(function()
     use("mbbill/undotree")
     -- install without yarn or npm
     use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
+	"iamcco/markdown-preview.nvim",
+	run = function() vim.fn["mkdp#util#install"]() end,
     })
 
     -- Colorscheme section
@@ -65,7 +81,14 @@ return require("packer").startup(function()
     use("folke/tokyonight.nvim")
 
     use("nvim-treesitter/nvim-treesitter", {
-        run = ":TSUpdate"
+	run = function()
+	    pcall(require('nvim-treesitter.install').update { with_sync = true })
+	end,
+    })
+
+    use({
+	'nvim-treesitter/nvim-treesitter-textobjects',
+	after = 'nvim-treesitter',
     })
 
     use("nvim-treesitter/playground")
@@ -75,12 +98,11 @@ return require("packer").startup(function()
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
 
+    use('folke/zen-mode.nvim')
+
     -- Golang Plugins
     use("ray-x/go.nvim")
     use("ray-x/guihua.lua")
-
-    -- Rust Plugins
-    use("simrat39/rust-tools.nvim")
 
     -- devcontainers
     use('https://codeberg.org/esensar/nvim-dev-container')
@@ -90,7 +112,7 @@ return require("packer").startup(function()
 
 
     if packer_bootstrap then
-        require('packer').sync()
+	require('packer').sync()
     end
 end)
 
