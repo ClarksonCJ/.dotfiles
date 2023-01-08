@@ -39,3 +39,7 @@ end)
 nnoremap("<leader>gm", function()
     require('telescope').extensions.git_worktree.create_git_worktree()
 end)
+
+nnoremap("<leader>km", function()
+    require('telescope.builtin').keymaps()
+end)
