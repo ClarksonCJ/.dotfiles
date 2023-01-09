@@ -2,9 +2,9 @@ local ensure_packer = function()
     local fn = vim.fn
     local install_path = os.getenv('HOME')..'/.local/share/nvim/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-        vim.cmd [[packadd packer.nvim]]
-        return true
+	fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	vim.cmd [[packadd packer.nvim]]
+	return true
     end
     return false
 end
@@ -12,7 +12,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 
-return require("packer").startup(function()
+return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     use("sbdchd/neoformat")
 
@@ -23,57 +23,72 @@ return require("packer").startup(function()
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
     use("nvim-telescope/telescope.nvim")
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+    use("kyazdani42/nvim-web-devicons")
 
     use({
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	'nvim-lualine/lualine.nvim',
+	requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     })
 
+    use('lukas-reineke/indent-blankline.nvim') -- Add indentation guides even on blank lines
+    use('numToStr/Comment.nvim') -- "gc" to comment visual regions/lines
+    use('tpope/vim-sleuth') -- Detect tabstop and shiftwidth automatically
+    use('tpope/vim-fugitive')
+    use('tpope/vim-rhubarb')
+    use('lewis6991/gitsigns.nvim')
+
+
     -- All the things
-    use("neovim/nvim-lspconfig")
-    use("simrat39/inlay-hints.nvim")
-    use ({
-        "neovim/nvim-lspconfig",
-        opt = true,
-        event = { "BufReadPre" },
-        wants = {
-            "inlay-hints.nvim",
-        },
-        config = function()
-            require("config.lsp").setup()
-        end,
-        requires = {
-            {
-                "simrat39/inlay-hints.nvim",
-                config = function()
-                    require("inlay-hints").setup()
-                end,
-            },
-        },
-    })
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/nvim-cmp")
+    use {
+	'VonHeikemen/lsp-zero.nvim',
+	requires = {
+	    -- LSP Support
+	    {'neovim/nvim-lspconfig'},
+	    {'williamboman/mason.nvim'},
+	    {'williamboman/mason-lspconfig.nvim'},
+
+	    -- Autocompletion
+	    {'hrsh7th/nvim-cmp'},
+	    {'hrsh7th/cmp-buffer'},
+	    {'hrsh7th/cmp-path'},
+	    {'saadparwaiz1/cmp_luasnip'},
+	    {'hrsh7th/cmp-nvim-lsp'},
+	    {'hrsh7th/cmp-nvim-lua'},
+
+	    -- Snippets
+	    {'L3MON4D3/LuaSnip'},
+	    {'rafamadriz/friendly-snippets'},
+	    {"simrat39/symbols-outline.nvim"},
+	}
+    }
+
     use("tzachar/cmp-tabnine", { run = "./install.sh" })
-    use("onsails/lspkind-nvim")
-    use("nvim-lua/lsp_extensions.nvim")
-    use("glepnir/lspsaga.nvim")
-    use("simrat39/symbols-outline.nvim")
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
 
     -- Primeagen doesn"t create lodash
     use("ThePrimeagen/git-worktree.nvim")
     use("ThePrimeagen/harpoon")
 
     use("mbbill/undotree")
+    -- install without yarn or npm
+    use({
+	"iamcco/markdown-preview.nvim",
+	run = function() vim.fn["mkdp#util#install"]() end,
+    })
 
     -- Colorscheme section
-    use("gruvbox-community/gruvbox")
+    -- use("gruvbox-community/gruvbox")
     use("folke/tokyonight.nvim")
 
     use("nvim-treesitter/nvim-treesitter", {
-        run = ":TSUpdate"
+	run = function()
+	    pcall(require('nvim-treesitter.install').update { with_sync = true })
+	end,
+    })
+
+    use({
+	'nvim-treesitter/nvim-treesitter-textobjects',
+	after = 'nvim-treesitter',
     })
 
     use("nvim-treesitter/playground")
@@ -83,85 +98,21 @@ return require("packer").startup(function()
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
 
+    use('folke/zen-mode.nvim')
+
     -- Golang Plugins
     use("ray-x/go.nvim")
     use("ray-x/guihua.lua")
 
-    -- Rust Plugins
-    use("simrat39/rust-tools.nvim")
-
     -- devcontainers
     use('https://codeberg.org/esensar/nvim-dev-container')
 
+    -- TITS aka Time in the Saddle
+    use("ThePrimeagen/vim-be-good")
 
-	--[[
-    --
-	-- Lazy loading:
-	-- Load on specific commands
-	use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
 
-	-- Load on an autocommand event
-	use {'andymass/vim-matchup', event = 'VimEnter'}
-
-	-- Load on a combination of conditions: specific filetypes or commands
-	-- Also run code after load (see the "config" key)
-	use {
-	'w0rp/ale',
-	ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-	cmd = 'ALEEnable',
-	config = 'vim.cmd[[ALEEnable]]--[['
-	}
-
-	-- Plugins can have dependencies on other plugins
-	use {
-	'haorenW1025/completion-nvim',
-	opt = true,
-	requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
-	}
-
-	-- Plugins can also depend on rocks from luarocks.org:
-	use {
-	'my/supercoolplugin',
-	rocks = {'lpeg', {'lua-cjson', version = '2.1.0'}}
-	}
-
-	-- You can specify rocks in isolation
-	use_rocks 'penlight'
-	use_rocks {'lua-resty-http', 'lpeg'}
-
-	-- Local plugins can be included
-	use '~/projects/personal/hover.nvim'
-
-	-- Plugins can have post-install/update hooks
-	use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-
-	-- Post-install/update hook with neovim command
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
-	-- Post-install/update hook with call of vimscript function with argument
-	use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
-
-	-- Use specific branch, dependency and run lua file after load
-	use {
-	'glepnir/galaxyline.nvim', branch = 'main', config = function() require'statusline' end,
-	requires = {'kyazdani42/nvim-web-devicons'}
-	}
-
-	-- Use dependency and run lua function after load
-	use {
-	'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-	config = function() require('gitsigns').setup() end
-	}
-
-	-- You can specify multiple plugins in a single call
-	use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
-
-	-- You can alias plugin names
-	use {'dracula/vim', as = 'dracula'}
-	end)
-	--]]
     if packer_bootstrap then
-        require('packer').sync()
+	require('packer').sync()
     end
 end)
 

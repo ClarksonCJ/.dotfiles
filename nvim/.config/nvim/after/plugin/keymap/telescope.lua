@@ -18,12 +18,9 @@ end)
 nnoremap("<leader>pb", function()
     require('telescope.builtin').buffers()
 end)
-nnoremap("<leader>vh", function()
-    require('telescope.builtin').help_tags()
-end)
 
 -- TODO: Fix this immediately
-nnoremap("<leader>vwh", function()
+nnoremap("<leader>hh", function()
     require('telescope.builtin').help_tags()
 end)
 
@@ -42,9 +39,7 @@ end)
 nnoremap("<leader>gm", function()
     require('telescope').extensions.git_worktree.create_git_worktree()
 end)
-nnoremap("<leader>td", function()
-    require('clarksoncj.telescope').dev()
+
+nnoremap("<leader>km", function()
+    require('telescope.builtin').keymaps()
 end)
-
-
-
