@@ -1,6 +1,6 @@
-local lsp = require("lsp-zero")
+local lsp = require('lsp-zero')
 
-lsp.preset("recommended")
+lsp.preset('recommended')
 
 lsp.ensure_installed({
   'tsserver',
@@ -8,7 +8,7 @@ lsp.ensure_installed({
   'sumneko_lua',
   'rust_analyzer',
   'bashls',
-  'golangci_lint_ls',
+  'gopls',
   'graphql',
   'marksman',
   'ocamllsp',
@@ -37,7 +37,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+  ['<C-Space>'] = cmp.mapping.complete(),
 })
 
 -- disable completion with tab
@@ -60,23 +60,37 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
-
-  if client.name == "eslint" then
+  if client.name == 'eslint' then
       vim.cmd.LspStop('eslint')
       return
   end
 
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-  vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = '[H]over'})
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, remap = false, desc = '[G]oto [D]efinition'})
+  vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { buffer = bufnr, remap = false, desc = '[G]oto [R]eferences'})
+  vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, remap = false, desc = '[G]oto [I]mplementation'})
+  vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, { buffer = bufnr, remap = false, desc = '[O]pen Diag Float'})
+  vim.keymap.set('n', '<leader>sd', function() require'telescope.builtin'.diagnostics(require('telescope.themes').get_dropdown({})) end, { buffer = bufnr, remap = false, desc = '[V]iew [D]iagnositcs'})
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { buffer = bufnr, remap = false, desc = '[G]oto [N]ext Message'})
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, { buffer = bufnr, remap = false, desc = '[G]oto [P]rev Message'})
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = bufnr, remap = false, desc = 'Type [D]efinition'})
+  vim.keymap.set('n', '<leader>ds', function() require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown({})) end, { buffer = bufnr, remap = false, desc = '[D]ocument [S]ymbols'})
+  vim.keymap.set('n', '<leader>ws', function() require('telescope.builtin').lsp_dynamic_workspace_symbols(require('telescope.themes').get_dropdown({})) end, { buffer = bufnr, remap = false, desc = '[W]orkspace [S]ymbols'})
+  vim.keymap.set('n', '<leader>vo', function()
+      vim.lsp.buf.code_action({
+      filter = function(code_action)
+          if not code_action or not code_action.data then
+              return false
+          end
+
+          local data = code_action.data.id
+          return string.sub(data, #data - 1, #data) == ':0'
+      end,
+      apply = true
+  }) end, { buffer = bufnr, remap = false, desc = '[C]ode [A]ctions'})
+  vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, { buffer = bufnr, remap = false, desc = '[R]eferences'})
+  vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = 'Re[n]ame'})
+  vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = '[S]ignature [H]elp'})
 end)
 
 lsp.setup()
@@ -84,3 +98,4 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true,
 })
+
