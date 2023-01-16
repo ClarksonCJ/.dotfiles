@@ -37,7 +37,7 @@ autocmd({"BufWritePre"}, {
     group = ClarksoncjGroup,
     pattern = "*.go",
     callback = function()
-        require('go.format').gofmt()
+        require('go.format').goimport()
     end
 })
 
