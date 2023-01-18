@@ -125,11 +125,14 @@ bspwm-focused-underline = ${colors.linecolor}
 
 [module/github]
 type = internal/github
-token = ${file:~/.git-token}
+;token = ${file:~/.git-token}
 
-;empty-notifications = true
+token = ${env:GITHUB_TOKEN}
+user = ClarksonCJ
+interval = 60
 
-label = %{A1:web --new-window https\://github.com/notifications&:}%notifications%%{A}
+empty-notifications = true
+
 label-padding = 2
 label-background = #f0c209
 label-foreground = #000

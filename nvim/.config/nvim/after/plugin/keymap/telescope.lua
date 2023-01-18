@@ -15,14 +15,27 @@ end)
 nnoremap("<leader>pw", function()
     require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
 end)
-nnoremap("<leader>pb", function()
+nnoremap("<leader><space>", function()
     require('telescope.builtin').buffers()
 end)
+
+nnoremap("<leader>pg", require('telescope.builtin').live_grep)
+nnoremap("<leader>?", require('telescope.builtin').oldfiles)
 
 -- TODO: Fix this immediately
 nnoremap("<leader>hh", function()
     require('telescope.builtin').help_tags()
 end)
+
+nnoremap('<leader>/', function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[/] Fuzzily search in current buffer]' })
+
+nnoremap("<leader>pd", require('telescope.builtin').diagnostics)
 
 nnoremap("<leader>vrc", function()
     require('clarksoncj.telescope').search_dotfiles({ hidden = true })

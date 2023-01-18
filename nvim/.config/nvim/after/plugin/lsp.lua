@@ -17,6 +17,7 @@ lsp.ensure_installed({
   'vimls',
   'yamlls',
   'ansiblels',
+  'dockerls',
 })
 
 -- Fix Undefined global 'vim'
@@ -76,7 +77,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = bufnr, remap = false, desc = 'Type [D]efinition'})
   vim.keymap.set('n', '<leader>ds', function() require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown({})) end, { buffer = bufnr, remap = false, desc = '[D]ocument [S]ymbols'})
   vim.keymap.set('n', '<leader>ws', function() require('telescope.builtin').lsp_dynamic_workspace_symbols(require('telescope.themes').get_dropdown({})) end, { buffer = bufnr, remap = false, desc = '[W]orkspace [S]ymbols'})
-  vim.keymap.set('n', '<leader>vo', function()
+  vim.keymap.set('n', '<leader>ca', function()
       vim.lsp.buf.code_action({
       filter = function(code_action)
           if not code_action or not code_action.data then

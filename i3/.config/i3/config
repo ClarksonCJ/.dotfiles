@@ -1,6 +1,9 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 for_window [class="^.*"] border pixel 0
+smart_gaps on
+gaps inner 10
+gaps outer 5
 
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
@@ -24,7 +27,7 @@ set $transparent #00000000
 
 set $mod Mod4
 set $mod1 Mod1
-set $terminator terminator
+set $terminal ~/.cargo/bin/alacritty
 set $screencast bash ~/.local/bin/screencast
 
 
@@ -42,8 +45,8 @@ font pango:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminator by pressing Mod key + x or ENTER
-bindsym $mod+Return exec $terminator
-bindsym $mod+x exec $terminator
+bindsym $mod+Return exec $terminal
+bindsym $mod+x exec $terminal
 
 # Custom bindsyms
 bindsym $mod+p exec ~/.config/i3/bin/logout
@@ -222,9 +225,8 @@ exec_always --no-startup-id $HOME/.screenlayout/home.sh
 exec_always --no-startup-id autorandr --change
 exec --no-startup-id dunst
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# exec --no-startup-id compton --config ~/.config/compton.conf -b
-exec --no-startup-id clipit &;
-# exec_always feh --bg-scale /home/chris/Pictures/cityscape.jpeg
+exec_always --no-startup-id picom --config ~/.config/compton.conf -b
+exec_always feh --bg-scale ~/personal/anime/skyline.jpg
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id slack
 # exec_always --no-startup-id discord
@@ -236,7 +238,7 @@ exec_always --no-startup-id /usr/bin/blueman-manager
 # Check class by using xprop command
 assign [class="(?i)google-chrome"] $ws1
 assign [class="(?i)Firefox"] $ws1
-assign [class="(?i)terminator"] $ws2
+assign [class="(?i)alacritty"] $ws2
 assign [class="(?i)code"] $ws2
 assign [class="(?i)slack"] $ws3
 assign [class="(?i)discord"] $ws3

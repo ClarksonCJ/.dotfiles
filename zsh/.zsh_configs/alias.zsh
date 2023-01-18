@@ -34,3 +34,6 @@ alias gz="git cz"
 
 # ripgrep Aliases
 alias rgf='rg --files | rg'
+
+# docker replacements
+alias docker=podman

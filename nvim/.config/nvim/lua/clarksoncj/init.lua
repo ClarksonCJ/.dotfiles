@@ -7,10 +7,10 @@ require("clarksoncj.evil_line")
 require("clarksoncj.devcontainer")
 
 local augroup = vim.api.nvim_create_augroup
-local ClarksoncjGroup = augroup('clarksoncj', {})
+local ClarksoncjGroup = augroup('clarksoncj', { clear = true })
 
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
+local yank_group = augroup('HighlightYank', { clear = true })
 
 function R(name)
     require("plenary.reload").reload_module(name)

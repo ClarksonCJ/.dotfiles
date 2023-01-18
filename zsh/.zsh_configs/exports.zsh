@@ -36,7 +36,6 @@ export PATH="$GOENV_ROOT/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 export GIT_MERGE_AUTOCOMMIT=no
-export TERM=xterm-256color
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34:su=0:sg=0:tw=0:ow=0:"
 # Python
 
