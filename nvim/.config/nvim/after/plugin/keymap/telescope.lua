@@ -15,6 +15,14 @@ end)
 nnoremap("<leader>pw", function()
     require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
 end)
+nnoremap("<leader>pg", function()
+    require('telescope.builtin').live_grep()
+end)
+
+nnoremap("<leader>sd", function()
+        require'telescope.builtin'.diagnostics(require('telescope.themes').get_dropdown({}))
+end)
+
 nnoremap("<leader><space>", function()
     require('telescope.builtin').buffers()
 end)
@@ -56,3 +64,14 @@ end)
 nnoremap("<leader>km", function()
     require('telescope.builtin').keymaps()
 end)
+
+nnoremap("<leader>?", function()
+    require('telescope.builtin').oldfiles()
+end, { desc = "[?] Find recently opened files" } )
+
+nnoremap("<leader>/", function()
+    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        winblend = 10,
+        previewer = false,
+    })
+end,  { desc = "[/] Fuzzy search in buffer" })
