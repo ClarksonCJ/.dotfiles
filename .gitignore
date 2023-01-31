@@ -1,2 +1,5 @@
 bin/.local/bin/solang
+bin/.local/bin/kubectl
+bin/.local/share
+bin/.local/state
 **/local*

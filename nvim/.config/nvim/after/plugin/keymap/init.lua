@@ -55,4 +55,3 @@ nnoremap("<leader>ta", function()
     tail.reset()
     tmux.reset()
 end);
-
