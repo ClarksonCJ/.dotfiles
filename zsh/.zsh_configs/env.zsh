@@ -9,6 +9,8 @@ CONFIG_DIR=$HOME/.zsh_configs
 [ -f $CONFIG_DIR/alias.zsh ] && source $CONFIG_DIR/alias.zsh
 [ -f $CONFIG_DIR/local.zsh ] && source $CONFIG_DIR/local.zsh
 [ -f $HOME/.sdkman/bin/sdkman-init.sh ] && source $HOME/.sdkman/bin/sdkman-init.sh
+[ -f $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh
+[ -f $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ] && source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 # Execute Env Setup scripts
 eval "$(rbenv init -)"
