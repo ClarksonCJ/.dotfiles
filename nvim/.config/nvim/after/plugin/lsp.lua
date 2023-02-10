@@ -11,7 +11,6 @@ lsp.ensure_installed({
   'gopls',
   'graphql',
   'marksman',
-  'ocamllsp',
   'jedi_language_server',
   'terraformls',
   'vimls',
@@ -31,7 +30,6 @@ lsp.configure('sumneko_lua', {
     }
 })
 
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -47,7 +45,13 @@ cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+  mapping = cmp_mappings,
+  sources = {
+      { name = 'path' },
+      { name = 'nvim_lsp', keyword_length = 1 },
+      { name = 'buffer', keyword_length = 3 },
+      { name = 'luasnip', keyword_length = 2 },
+  }
 })
 
 lsp.set_preferences({
