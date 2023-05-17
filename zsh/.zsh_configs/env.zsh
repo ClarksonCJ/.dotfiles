@@ -8,14 +8,16 @@ CONFIG_DIR=$HOME/.zsh_configs
 [ -f $CONFIG_DIR/functions.zsh ] && source $CONFIG_DIR/functions.zsh
 [ -f $CONFIG_DIR/alias.zsh ] && source $CONFIG_DIR/alias.zsh
 [ -f $CONFIG_DIR/local.zsh ] && source $CONFIG_DIR/local.zsh
-[ -f $HOME/.sdkman/bin/sdkman-init.sh ] && source $HOME/.sdkman/bin/sdkman-init.sh
+[[ ! -r /home/chris/.opam/opam-init/init.zsh ]] || source /home/chris/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 # Execute Env Setup scripts
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init -)"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(direnv hook zsh)"
 source $HOME/.cargo/env
+source <(kubectl completion zsh)
 eval "$(goenv init -)"
 
 # PATH exports for Go env,TODO:  find better way
@@ -26,7 +28,6 @@ export PATH="$PATH:$GOPATH/bin"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 export NODE_PATH=$(realpath $(dirname $(nvm which current))/../lib/node_modules)
 
-[[ ! -r /home/chris/.opam/opam-init/init.zsh ]] || source /home/chris/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 fpath+=$ZSH/custom/completions
 
@@ -82,7 +83,7 @@ zstyle ':completion:*' menu select=2
 #zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 
 # Add colors in completions
-eval $(dircolors)
+eval $(gdircolors)
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload colors && colors
 

@@ -1,6 +1,6 @@
 # export ZSH=$HOME/.oh-my-zsh
 # Plugin Configuration
-source /usr/local/share/antigen/antigen.zsh
+source ~/antigen.zsh
 
 CONFIG_DIR=$HOME/.zsh_configs
 # Use Antigen for plugin management
@@ -55,12 +55,11 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f $CONFIG_DIR/.p10k.zsh ]] || source $CONFIG_DIR/.p10k.zsh
-source <(kubectl completion zsh)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/chrisclarkson/.sdkman"
-[[ -s "/home/chrisclarkson/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chrisclarkson/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

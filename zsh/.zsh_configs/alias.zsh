@@ -8,7 +8,6 @@ alias bazel=bazelisk
 alias grep="rg"
 alias pbcopy="xclip -sel clip"
 
-source <(kubectl completion zsh)
 alias k=kubectl
 complete -F __start_kubectl k
 
