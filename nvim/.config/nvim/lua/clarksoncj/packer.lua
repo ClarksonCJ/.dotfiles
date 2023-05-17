@@ -64,6 +64,7 @@ return require("packer").startup(function(use)
 	}
 
 	use("tzachar/cmp-tabnine", { run = "./install.sh" })
+	use "akinsho/toggleterm.nvim"
 
 	-- Primeagen doesn"t create lodash
 	use("ThePrimeagen/git-worktree.nvim")
