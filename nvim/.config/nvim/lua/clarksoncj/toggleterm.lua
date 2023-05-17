@@ -65,3 +65,7 @@ function _PYTHON_TOGGLE()
 	python:toggle()
 end
 
+vim.api.nvim_set_keymap("n", "<C-\\>n", "<cmd>lua _NODE_TOGGLE()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-\\>h", "<cmd>lua _HTOP_TOGGLE()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-\\>p", "<cmd>lua _PYTHON_TOGGLE()<CR>", {noremap = true, silent = true})
+
