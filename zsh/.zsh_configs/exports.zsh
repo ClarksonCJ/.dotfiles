@@ -13,26 +13,8 @@ export MANPATH=$MANPATH:/usr/local/opt/coreutils/libexec/gnuman
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$PATH:/usr/local/go/bin
-export PATH=/snap/bin:$PATH
-export GOPATH=$HOME/Go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
-export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-# Ruby
-export RBENV_ROOT="${HOME}/.rbenv"
-export PATH="${RBENV_ROOT}/bin:${PATH}"
-
-# Go env
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 export GIT_MERGE_AUTOCOMMIT=no
