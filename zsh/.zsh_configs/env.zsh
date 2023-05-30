@@ -8,10 +8,12 @@ CONFIG_DIR=$HOME/.zsh_configs
 [ -f $CONFIG_DIR/functions.zsh ] && source $CONFIG_DIR/functions.zsh
 [ -f $CONFIG_DIR/alias.zsh ] && source $CONFIG_DIR/alias.zsh
 [ -f $CONFIG_DIR/local.zsh ] && source $CONFIG_DIR/local.zsh
-[[ ! -r /home/chris/.opam/opam-init/init.zsh ]] || source /home/chris/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[ -f $HOME/.sdkman/bin/sdkman-init.sh ] && source $HOME/.sdkman/bin/sdkman-init.sh
+[ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ] && source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+[[ ! -r /Users/chrisclarkson/.opam/opam-init/init.zsh ]] || source /Users/chrisclarkson/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 # Execute Env Setup scripts
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/usr/local/bin/brew shellenv)"
 eval "$(rbenv init -)"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"

@@ -11,6 +11,7 @@ lsp.ensure_installed({
   'gopls',
   'graphql',
   'marksman',
+  'ocamllsp',
   'jedi_language_server',
   'terraformls',
   'vimls',

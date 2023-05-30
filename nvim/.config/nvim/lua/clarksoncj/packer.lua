@@ -107,6 +107,7 @@ return require("packer").startup(function(use)
 	use("theHamsta/nvim-dap-virtual-text")
 
 	use('folke/zen-mode.nvim')
+	use('github/copilot.vim')
 
 	-- Golang Plugins
 	use("ray-x/go.nvim")

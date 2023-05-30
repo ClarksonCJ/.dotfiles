@@ -26,6 +26,7 @@ antigen bundle git
 antigen bundle git-extras
 antigen bundle git-flow
 antigen bundle golang
+antigen bundle gpg-agent
 antigen bundle jsontools
 antigen bundle python
 antigen bundle pyenv
@@ -61,5 +62,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/chrisclarkson/.sdkman"
+[[ -s "/home/chrisclarkson/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chrisclarkson/.sdkman/bin/sdkman-init.sh"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
