@@ -63,7 +63,7 @@ return require("packer").startup(function(use)
 		}
 	}
 
-	use("tzachar/cmp-tabnine", { run = "./install.sh" })
+	use "github/copilot.vim"
 	use "akinsho/toggleterm.nvim"
 
 	-- Primeagen doesn"t create lodash
