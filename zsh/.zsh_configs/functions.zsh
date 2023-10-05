@@ -95,7 +95,18 @@ function branch_and_worktree() {
     cd $1
     pyenv virtualenv $(basename "$(pwd)")
     pyenv activate $(basename "$(pwd)")
+
+    if ! [ -f requirements.txt ]; then
+    cat << EOF > requirements.txt
+pip==23.2.1
+pre-commit==3.3.3
+commitizen==3.5.3
+pymarkdown==0.1.4
+EOF
+    fi
+
     pip install -r requirements.txt
+    pre-commit install
 }
 
 function update_system(){

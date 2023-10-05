@@ -63,7 +63,6 @@ return require("packer").startup(function(use)
 		}
 	}
 
-	use "github/copilot.vim"
 	use "akinsho/toggleterm.nvim"
 
 	-- Primeagen doesn"t create lodash

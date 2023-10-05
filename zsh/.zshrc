@@ -14,6 +14,7 @@ antigen theme romkatv/powerlevel10k
 antigen bundle aws
 antigen bundle autojump
 antigen bundle ansible
+antigen bundle asdf
 antigen bundle brew
 antigen bundle command-not-found
 antigen bundle compleat
@@ -53,6 +54,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+[ -f "${HOME}/.asdf/asdf.sh" ] && source "${HOME}/.asdf/asdf.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f $CONFIG_DIR/.p10k.zsh ]] || source $CONFIG_DIR/.p10k.zsh
