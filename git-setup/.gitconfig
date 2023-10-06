@@ -1,0 +1,80 @@
+[core]
+	pager = delta
+	editor = nvim
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	light = false
+
+[merge]
+	conflictStyle = diff3
+	tool = vimdiff
+
+[diff]
+	colorMoved = default
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
+[user]
+	name = Chris Clarkson
+	email = chrisclarkson@improbable.io
+	signingkey = C05B7673
+
+
+[commit]
+	gpgsign = true
+
+[color]
+	ui = true
+
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[init]
+	defaultBranch = main
+
+[fetch]
+	prune = true
+
+[alias]
+	cp = cherry-pick
+	co = checkout
+
+	st = status
+	stb = status -sb
+
+	ci = commit
+	cm = commit -m
+	ca = commit --amend -m
+	cmm = commit -Ssm
+	ss = commit --amend -S
+
+	last = log -1 HEAD --stat
+
+	ls = ls-files
+
+	lg = log -p
+	ll = log --oneline
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all --date=local
+
+	df = diff
+	ds = diff --staged
+
+	# Show files ignored by git:
+	ign = ls-files -o -i --exclude-standard
+
+	# Display all the consul list
+	cl = config --list
+
+	# Display all the git aliases
+	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
