@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "/Users/chrisclarkson/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-tabnine"] = {
-    loaded = true,
-    path = "/Users/chrisclarkson/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
-    url = "https://github.com/tzachar/cmp-tabnine"
-  },
   cmp_luasnip = {
     loaded = true,
     path = "/Users/chrisclarkson/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
