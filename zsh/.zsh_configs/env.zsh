@@ -31,6 +31,7 @@ export PATH="$PATH:$GOPATH/bin"
 export NODE_PATH=$(realpath $(dirname $(nvm which current))/../lib/node_modules)
 
 
+. "$HOME/.cargo/env"
 fpath+=$ZSH/custom/completions
 
 # ---[ Modules ]-------------------------------------------------------

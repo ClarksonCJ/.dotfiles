@@ -38,4 +38,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export DOCKERHOST=$(ifconfig | awk '/docker0/{getline; print}' | awk '{ print $2 }')
 
 export GPG_TTY=$(tty)
+export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 export GPGKEY=C05B7673

@@ -1,27 +1,37 @@
-local lsp = require('lsp-zero')
+local lsp_zero = require('lsp-zero')
+lsp_zero.extend_lspconfig()
 
-lsp.preset('recommended')
+lsp_zero.preset('recommended')
 
-lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'lua_ls',
-  'rust_analyzer',
-  'bashls',
-  'gopls',
-  'graphql',
-  'marksman',
-  'ocamllsp',
-  'jedi_language_server',
-  'terraformls',
-  'vimls',
-  'yamlls',
-  'ansiblels',
-  'dockerls',
+lsp_zero.on_attach(function(client, bufnr)
+    lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    ensure_installed = {
+        'tsserver',
+        'eslint',
+        'lua_ls',
+        'rust_analyzer',
+        'bashls',
+        'gopls',
+        'graphql',
+        'marksman',
+        'ocamllsp',
+        'jedi_language_server',
+        'terraformls',
+        'vimls',
+        'yamlls',
+        'ansiblels',
+        'dockerls'},
+    handlers = {
+        lsp_zero.default_setup,
+    }
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
+lsp_zero.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
@@ -33,7 +43,7 @@ lsp.configure('lua_ls', {
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
+local cmp_mappings = lsp_zero.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
@@ -45,7 +55,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
+cmp.setup({
   mapping = cmp_mappings,
   sources = {
       { name = 'path' },
@@ -55,7 +65,7 @@ lsp.setup_nvim_cmp({
   }
 })
 
-lsp.set_preferences({
+lsp_zero.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
         error = 'E',
@@ -65,7 +75,7 @@ lsp.set_preferences({
     }
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
   if client.name == 'eslint' then
       vim.cmd.LspStop('eslint')
       return
@@ -98,9 +108,16 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = '[S]ignature [H]elp'})
 end)
 
-lsp.setup()
+lsp_zero.setup()
 
 vim.diagnostic.config({
     virtual_text = true,
 })
 
+require('lspconfig').gopls.setup({
+    settings = {
+        gopls = {
+            gofumpt = true
+        }
+    }
+})

@@ -3,6 +3,8 @@
 source ~/antigen.zsh
 
 CONFIG_DIR=$HOME/.zsh_configs
+
+
 # Use Antigen for plugin management
 antigen use oh-my-zsh
 
