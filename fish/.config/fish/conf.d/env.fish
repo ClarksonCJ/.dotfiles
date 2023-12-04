@@ -16,6 +16,8 @@ eval (env SHELL=fish /usr/local/bin/brew shellenv)
 
 set -Ux PYENV_ROOT $HOME/.pyenv
 fish_add_path $PYENV_ROOT/bin
+# Add Nix software path
+# fish_add_path /run/current-system/sw/bin
 pyenv init - | source
 
 status --is-interactive; and pyenv virtualenv-init - | source

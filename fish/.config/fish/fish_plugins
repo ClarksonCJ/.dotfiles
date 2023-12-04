@@ -4,3 +4,4 @@ rbenv/fish-rbenv
 yamadayuki/goenv
 jethrokuan/fzf
 jhillyerd/plugin-git
+lilyball/nix-env.fish
