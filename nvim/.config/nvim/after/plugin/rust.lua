@@ -1,9 +1,9 @@
 local ih = require("inlay-hints")
+local rt = require("rust-tools")
 
-require("rust-tools").setup({
+rt.setup({
     tools = {
         autoSetHints = true,
-        hover_with_actions = true,
         runnables = {
             use_telescope = true,
         },
@@ -17,6 +17,10 @@ require("rust-tools").setup({
     server = {
         on_attach = function(client, bufnr)
             ih.on_attach(client, bufnr)
+            -- Hover actions
+            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            -- Code action groups
+            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
         end,
     },
 })

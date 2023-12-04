@@ -1,4 +1,5 @@
 local lsp_zero = require('lsp-zero')
+local ih = require("inlay-hints")
 lsp_zero.extend_lspconfig()
 
 lsp_zero.preset('recommended')
@@ -115,9 +116,21 @@ vim.diagnostic.config({
 })
 
 require('lspconfig').gopls.setup({
+    on_attach = function(c, b)
+        ih.on_attach(c, b)
+    end,
     settings = {
         gopls = {
-            gofumpt = true
+            gofumpt = true,
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
         }
     }
 })

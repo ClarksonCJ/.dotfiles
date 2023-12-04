@@ -26,7 +26,5 @@ null_ls.setup({
         null_ls.builtins.diagnostics.selene,
         -- Code Actions
         null_ls.builtins.code_actions.ltrs,
-
-
     },
 })

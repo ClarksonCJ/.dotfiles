@@ -22,14 +22,14 @@ require("telescope").setup({
 			},
 		},
 	},
-    --[[
+	--[[
 	extensions = {
 		fzy_native = {
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
 	},
-    ]]
+	]]
 })
 
 require("telescope").load_extension("git_worktree")
@@ -56,7 +56,7 @@ M.search_dotfiles = function()
 end
 
 local function set_background(content)
-    print(content)
+	print(content)
 	vim.fn.system("feh --bg-max " .. content)
 end
 
@@ -85,7 +85,7 @@ local function image_selector(prompt, cwd)
 			cwd = cwd,
 
 			attach_mappings = function(prompt_bufnr, map)
-                print("help me ???")
+				print("help me ???")
 				select_background(prompt_bufnr, map)
 
 				-- Please continue mapping (attaching additional key maps):
@@ -206,14 +206,14 @@ M.dev = function(opts)
 				vim.schedule(function()
 					-- vim.cmd(string.format([[normal!]], entry.value.text))
 					vim.api.nvim_feedkeys(
-						vim.api.nvim_replace_termcodes(
-							string.format("<esc>:lua require('%s').%s()", mod_name, entry.value.text),
-							true,
-							false,
-							true
-						),
-						"n",
-						true
+					vim.api.nvim_replace_termcodes(
+					string.format("<esc>:lua require('%s').%s()", mod_name, entry.value.text),
+					true,
+					false,
+					true
+					),
+					"n",
+					true
 					)
 				end)
 			end)

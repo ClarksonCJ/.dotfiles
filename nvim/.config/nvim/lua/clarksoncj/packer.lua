@@ -62,6 +62,8 @@ return require("packer").startup(function(use)
 			{ "simrat39/symbols-outline.nvim" },
 		}
 	}
+	use { "simrat39/inlay-hints.nvim" }
+	use { "simrat39/rust-tools.nvim" }
 
 	use "akinsho/toggleterm.nvim"
 
