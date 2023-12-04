@@ -12,7 +12,7 @@ end
 source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 # Execute Env Setup scripts
-eval (env SHELL=fish /opt/homebrew/bin/brew shellenv)
+eval (env SHELL=fish /usr/local/bin/brew shellenv)
 
 set -Ux PYENV_ROOT $HOME/.pyenv
 fish_add_path $PYENV_ROOT/bin
