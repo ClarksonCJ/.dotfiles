@@ -33,11 +33,17 @@ require('mason-lspconfig').setup({
 
 -- Fix Undefined global 'vim'
 lsp_zero.configure('lua_ls', {
+    on_attach = function(c, b)
+        ih.on_attach(c, b)
+    end,
     settings = {
         Lua = {
             diagnostics = {
                 globals = { 'vim' }
-            }
+            },
+            hint = {
+                enable = true,
+            },
         }
     }
 })
