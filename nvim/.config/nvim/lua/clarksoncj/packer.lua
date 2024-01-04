@@ -112,11 +112,24 @@ return require("packer").startup(function(use)
 	use("ray-x/go.nvim")
 	use("ray-x/guihua.lua")
 
+	-- Rust Plugins
+	use 'simrat39/rust-tools.nvim'
+
 	-- devcontainers
 	use('https://codeberg.org/esensar/nvim-dev-container')
 
 	-- TITS aka Time in the Saddle
 	use("ThePrimeagen/vim-be-good")
+
+	use {
+		"danymat/neogen",
+		config = function()
+			require('neogen').setup {}
+		end,
+		requires = "nvim-treesitter/nvim-treesitter",
+		-- Uncomment next line if you want to follow only stable versions
+		-- tag = "*"
+	}
 
 
 	if packer_bootstrap then

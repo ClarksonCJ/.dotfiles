@@ -4,7 +4,6 @@ require("clarksoncj.neogit")
 require("clarksoncj.debugger")
 require("clarksoncj.rtp")
 require("clarksoncj.evil_line")
-require("clarksoncj.devcontainer")
 require("clarksoncj.toggleterm")
 
 local augroup = vim.api.nvim_create_augroup

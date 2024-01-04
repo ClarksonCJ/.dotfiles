@@ -10,7 +10,7 @@ nnoremap("<C-p>", function()
 end, { desc = "<C-p> Search Git files" })
 
 nnoremap("<Leader>pf", function()
-    require('telescope.builtin').find_files()
+    require('telescope.builtin').find_files({ hidden = true })
 end, { desc = "[pf] Find Files" })
 
 nnoremap("<leader>pw", function()
@@ -25,7 +25,9 @@ nnoremap("<leader><space>", function()
     require('telescope.builtin').buffers()
 end, { desc = "Buffers" })
 
-nnoremap("<leader>pg", require('telescope.builtin').live_grep, { desc = "[pg] Live Grep" })
+nnoremap("<leader>pg", function()
+    require('telescope.builtin').live_grep({ hidden = true })
+end, { desc = "[pg] Live Grep"})
 
 -- TODO: Fix this immediately
 nnoremap("<leader>hh", function()
