@@ -5,9 +5,7 @@ lsp_zero.preset('recommended')
 
 lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.default_keymaps({buffer = bufnr})
-end)
 
-lsp_zero.on_attach(function(client, bufnr)
     if client.name == 'eslint' then
         vim.cmd.LspStop('eslint')
         return
@@ -177,19 +175,22 @@ require('mason-lspconfig').setup({
                 on_attach = function(c, b)
                     vim.lsp.inlay_hint.enable(b, true)
                 end,
-                python = {
-                    analysis = {
-                        useLibraryCodeForTypes = true,
-                        diagnosticSeverityOverrides = {
-                            reportGeneralTypeIssues = "none",
-                            reportOptionalMemberAccess = "none",
-                            reportOptionalSubscript = "none",
-                            reportPrivateImportUsage = "none",
+                settings = {
+                    python = {
+                        analysis = {
+                            useLibraryCodeForTypes = true,
+                            diagnosticSeverityOverrides = {
+                                reportGeneralTypeIssues = "none",
+                                reportOptionalMemberAccess = "none",
+                                reportOptionalSubscript = "none",
+                                reportPrivateImportUsage = "none",
+                            },
+                            autoImportCompletions = false,
                         },
-                        autoImportCompletions = false,
+                        linting = {pylintEnabled = false}
                     },
-                    linting = {pylintEnabled = false}
-                }
+                },
+
             })
         end,
         pylsp = function()
@@ -197,18 +198,20 @@ require('mason-lspconfig').setup({
                 on_attach = function(c, b)
                     vim.lsp.inlay_hint.enable(b, true)
                 end,
-                pylsp = {
-                    builtin = {
-                        installExtraArgs = {'flake8', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylint', 'yapf'},
-                    },
-                    plugins = {
-                        jedi_completion = { enabled = false },
-                        rope_completion = { enabled = false },
-                        flake8 = { enabled = false },
-                        pyflakes = { enabled = false },
-                        pycodestyle = {
-                            ignore = {'E226', 'E266', 'E302', 'E303', 'E304', 'E305', 'E402', 'C0103', 'W0104', 'W0621', 'W391', 'W503', 'W504'},
-                            maxLineLength = 99,
+                settings = {
+                    pylsp = {
+                        builtin = {
+                            installExtraArgs = {'flake8', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylint', 'yapf'},
+                        },
+                        plugins = {
+                            jedi_completion = { enabled = false },
+                            rope_completion = { enabled = false },
+                            flake8 = { enabled = false },
+                            pyflakes = { enabled = false },
+                            pycodestyle = {
+                                ignore = {'E226', 'E266', 'E302', 'E303', 'E304', 'E305', 'E402', 'C0103', 'W0104', 'W0621', 'W391', 'W503', 'W504'},
+                                maxLineLength = 99,
+                            },
                         },
                     },
                 },
