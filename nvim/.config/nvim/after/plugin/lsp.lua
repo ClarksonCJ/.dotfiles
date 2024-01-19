@@ -49,7 +49,6 @@ local lsp_servers = {
     'graphql',
     'lua_ls',
     'marksman',
-    'ocamllsp',
     'pylsp',
     'pyright',
     'rust_analyzer',
