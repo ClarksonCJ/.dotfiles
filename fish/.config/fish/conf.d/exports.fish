@@ -33,4 +33,4 @@ gpgconf --launch gpg-agent
 set -e SSH_AUTH_SOCK
 set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 set -x GPG_TTY (tty)
-set -gx GPGKEY C05B7673
+set -gx GPGKEY D8741D6669D293B72A9BCBD7DA98F409BE00FF22

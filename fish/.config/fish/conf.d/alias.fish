@@ -6,7 +6,6 @@ alias vi=nvim
 alias pwgen="pwgen -y 15"
 alias bazel=bazelisk
 alias grep="rg"
-alias pbcopy="xclip -sel clip"
 
 alias k=kubectl
 
@@ -15,7 +14,7 @@ alias curl=curlie
 alias disable_screen='xrandr --output DP-3 --off'
 alias enable_screen='autorandr --change'
 
-alias ls='exa' # just replace ls by exa and allow all other exa arguments
+alias ls='eza' # just replace ls by exa and allow all other exa arguments
 alias l='ls -lbF' #   list, size, type
 alias ll='ls -la' # long, all
 alias llm='ll --sort=modified' # list, long, sort by modification date
