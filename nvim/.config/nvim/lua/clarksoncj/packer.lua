@@ -55,11 +55,14 @@ return require("packer").startup(function(use)
 			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'hrsh7th/cmp-nvim-lua' },
+			{ 'petertriho/cmp-git' },
 
 			-- Snippets
 			{ 'L3MON4D3/LuaSnip' },
 			{ 'rafamadriz/friendly-snippets' },
 			{ "simrat39/symbols-outline.nvim" },
+
+			{ 'simrat39/inlay-hints.nvim' },
 		}
 	}
 
@@ -77,8 +80,6 @@ return require("packer").startup(function(use)
 	})
 
 	-- Colorscheme section
-	use("gruvbox-community/gruvbox")
-	use("folke/tokyonight.nvim")
 	use({
 		'rose-pine/neovim',
 		as = 'rose-pine',

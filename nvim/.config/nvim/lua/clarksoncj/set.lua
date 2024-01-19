@@ -39,6 +39,7 @@ vim.opt.updatetime = 50
 vim.opt.shortmess:append("c")
 
 vim.opt.colorcolumn = "120"
+vim.cmd  'colorscheme rose-pine'
 
 vim.g.mapleader = " "
 
