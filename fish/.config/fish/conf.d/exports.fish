@@ -15,6 +15,8 @@ set -gx GIT_MERGE_AUTOCOMMIT no
 set -gx LS_COLORS "di 34 ln 35 so 32 pi 33 ex 31 bd 34;46 cd 34 su 0 sg 0 tw 0 ow 0 "
 # Python
 
+# FZF configs
+set -gx FZF_DEFAULT_OPTS "--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1"
 
 # Enable color in grep
 set -gx GREP_COLOR '3;33'
