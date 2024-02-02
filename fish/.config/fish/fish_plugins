@@ -2,5 +2,5 @@ jorgebucaran/fisher
 jorgebucaran/nvm.fish
 rbenv/fish-rbenv
 yamadayuki/goenv
-jethrokuan/fzf
 jhillyerd/plugin-git
+patrickf1/fzf.fish

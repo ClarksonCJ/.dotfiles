@@ -132,6 +132,8 @@ return require("packer").startup(function(use)
 		-- tag = "*"
 	}
 
+	use { 'junegunn/fzf' }
+
 
 	if packer_bootstrap then
 		require('packer').sync()
