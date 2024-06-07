@@ -8,7 +8,6 @@ alias bazel=bazelisk
 alias grep="rg"
 
 alias k=kubectl
-alias docker=podman
 
 alias cat=bat
 alias curl=curlie

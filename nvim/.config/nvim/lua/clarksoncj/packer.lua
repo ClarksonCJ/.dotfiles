@@ -37,7 +37,13 @@ return require("packer").startup(function(use)
 	use('tpope/vim-fugitive')
 	use('tpope/vim-rhubarb')
 	use('lewis6991/gitsigns.nvim')
-	use('jose-elias-alvarez/null-ls.nvim')
+	use({
+		'nvimtools/none-ls.nvim',
+		dependencies = {
+			'nvimtools/none-ls-extras.nvim',
+			'gbprod/none-ls-shellcheck.nvim'
+		},
+	})
 
 	-- All the things
 	use {
@@ -61,8 +67,6 @@ return require("packer").startup(function(use)
 			{ 'L3MON4D3/LuaSnip' },
 			{ 'rafamadriz/friendly-snippets' },
 			{ "simrat39/symbols-outline.nvim" },
-
-			{ 'simrat39/inlay-hints.nvim' },
 		}
 	}
 
@@ -102,7 +106,11 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/playground")
 	use("romgrk/nvim-treesitter-context")
 
-	use("mfussenegger/nvim-dap")
+	use({
+		"mfussenegger/nvim-dap",
+		requires = "nvim-neotest/nvim-nio"
+	})
+
 	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
 
@@ -114,10 +122,7 @@ return require("packer").startup(function(use)
 	use("ray-x/guihua.lua")
 
 	-- Rust Plugins
-	use 'simrat39/rust-tools.nvim'
-
-	-- devcontainers
-	use('https://codeberg.org/esensar/nvim-dev-container')
+	use 'mrcjkb/rustaceanvim'
 
 	-- TITS aka Time in the Saddle
 	use("ThePrimeagen/vim-be-good")

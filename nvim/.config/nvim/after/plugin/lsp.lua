@@ -21,21 +21,9 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = bufnr, remap = false, desc = 'Type [D]efinition'})
     vim.keymap.set('n', '<leader>ds', function() require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown({})) end, { buffer = bufnr, remap = false, desc = '[D]ocument [S]ymbols'})
     vim.keymap.set('n', '<leader>ws', function() require('telescope.builtin').lsp_dynamic_workspace_symbols(require('telescope.themes').get_dropdown({})) end, { buffer = bufnr, remap = false, desc = '[W]orkspace [S]ymbols'})
-    vim.keymap.set('n', '<leader>ca', function()
-        vim.lsp.buf.code_action({
-            filter = function(code_action)
-                if not code_action or not code_action.data then
-                    return false
-                end
-
-                local data = code_action.data.id
-                return string.sub(data, #data - 1, #data) == ':0'
-            end,
-            apply = true
-        }) end, { buffer = bufnr, remap = false, desc = '[C]ode [A]ctions'})
-        vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, { buffer = bufnr, remap = false, desc = '[R]eferences'})
-        vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = 'Re[n]ame'})
-        vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = '[S]ignature [H]elp'})
+    vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, { buffer = bufnr, remap = false, desc = '[R]eferences'})
+    vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = 'Re[n]ame'})
+    vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = '[S]ignature [H]elp'})
     end)
 
 lsp_zero.setup()
@@ -51,7 +39,6 @@ local lsp_servers = {
     'marksman',
     'pylsp',
     'pyright',
-    'rust_analyzer',
     'tsserver',
     'terraformls',
     'vimls',
@@ -71,9 +58,6 @@ require('mason-lspconfig').setup({
         lua_ls = function()
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
-                on_attach = function(c, b)
-                    vim.lsp.inlay_hint.enable(b, true)
-                end,
                 settings = {
                     Lua = {
                         runtime = {
@@ -112,8 +96,23 @@ require('mason-lspconfig').setup({
             lspconfig.gopls.setup({
                 capabilities = capabilities,
                 flags = { debounce_text_changes = 200 },
-                on_attach = function(c, b)
-                    vim.lsp.inlay_hint.enable(b, true)
+                on_attach = function(client, bufnr)
+
+                    local Remap = require("clarksoncj.keymap")
+                    local nnoremap = Remap.nnoremap
+
+                    nnoremap("<leader>gl", ":GoLint<CR>", { desc = "[gl] GoLint" })
+                    nnoremap("<leader>gat", ":GoAddTag<CR>", { desc = "[gat] GoAddTag" })
+                    nnoremap("<leader>grt", ":GoRmTag<CR>", { desc = "[grt] GoRmTag" })
+                    nnoremap("<leader>goc", ":GoCmt<CR>", { desc = "[goc] GoCmt" })
+                    nnoremap("<leader>gtt", ":GoTest<CR>", { desc = "[gtt] GoTest" })
+                    nnoremap("<leader>gfs", ":GoFillStruct<CR>", { desc = "[gfs] GoFillStruct" })
+                    nnoremap("<leader>gfsw", ":GoFillSwitch<CR>", { desc = "[gfsw] GoFillStruct" })
+                    nnoremap("<leader>gfi", ":GoIfErr<CR>", { desc = "[gfi] GoIfErr" })
+                    nnoremap("<leader>gfp", ":GoFixPlurals<CR>", { desc = "[gfp] GoFixPlurals" })
+                    nnoremap("<leader>gdd", ":GoDoc<CR>", { desc = "[gdd] GoDoc" })
+                    nnoremap("<leader>gdb", ":GoDebug<CR>", { desc = "[gdb] GoDebug" })
+                    nnoremap("<leader>ca", ":GoCodeAction<CR>", { desc = "[ca] GoCodeAction" })
                 end,
                 settings = {
                     gopls = {
@@ -140,9 +139,6 @@ require('mason-lspconfig').setup({
         tsserver = function()
             lspconfig.tsserver.setup({
                 capabilities = capabilities,
-                on_attach = function(c, b)
-                    vim.lsp.inlay_hint.enable(b, true)
-                end,
                 settings = {
                     javascript = {
                         inlayHints = {
@@ -171,9 +167,6 @@ require('mason-lspconfig').setup({
         end,
         pyright = function()
             lspconfig.pyright.setup({
-                on_attach = function(c, b)
-                    vim.lsp.inlay_hint.enable(b, true)
-                end,
                 settings = {
                     python = {
                         analysis = {
@@ -194,9 +187,6 @@ require('mason-lspconfig').setup({
         end,
         pylsp = function()
             lspconfig.pylsp.setup({
-                on_attach = function(c, b)
-                    vim.lsp.inlay_hint.enable(b, true)
-                end,
                 settings = {
                     pylsp = {
                         builtin = {
@@ -294,3 +284,6 @@ lsp_zero.set_preferences({
 vim.diagnostic.config({
     virtual_text = true,
 })
+
+-- enable Inlay_hints
+vim.lsp.inlay_hint.enable()

@@ -78,3 +78,5 @@
 
 	# Display all the git aliases
 	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+[push]
+	autoSetupRemote = true
