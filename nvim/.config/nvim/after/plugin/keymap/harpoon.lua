@@ -1,24 +1,44 @@
 local nnoremap = require("clarksoncj.keymap").nnoremap
+local harpoon = require("harpoon")
 
-local silent = { silent = true }
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
 
--- Terminal commands
--- ueoa is first through fourth finger left hand home row.
--- This just means I can crush, with opposite hand, the 4 terminal positions
---
--- These functions are stored in harpoon.  A plugn that I am developing
-nnoremap("<leader>a", function()
-    require("harpoon.mark").add_file()
+nnoremap( "<leader>a", function()
+    harpoon:list():add()
 end, { desc = "[a] Harpoon Mark" })
 
-nnoremap("<C-e>", function()
-    require("harpoon.ui").toggle_quick_menu()
-end, { desc = "<C-e> Harpoon Quick Menu" })
+-- nnoremap("<C-e>", function()
+--     harpoon.ui:toggle_quick_menu(harpoon:list())
+-- end, { desc = "<C-e> Harpoon Quick Menu" })
 
+-- Toggle previous & next buffers stored within Harpoon list
 nnoremap("<C-h>", function()
-    require("harpoon.ui").nav_next()
+    harpoon:list():prev()
 end, { desc = "<C-h> Next Harpoon Mark" })
 
 nnoremap("<C-l>", function()
-    require("harpoon.ui").nav_prev()
+    harpoon:list():next()
 end, { desc = "<C-l> Last Harpoon Mark" })
+
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+nnoremap( "<C-e>", function()
+    toggle_telescope(harpoon:list())
+end, { desc = "Open harpoon window" })

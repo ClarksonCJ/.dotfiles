@@ -74,7 +74,10 @@ return require("packer").startup(function(use)
 
 	-- Primeagen doesn"t create lodash
 	use("ThePrimeagen/git-worktree.nvim")
-	use("ThePrimeagen/harpoon")
+	use({
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { "nvim-lua/plenary.nvim" } })
 
 	use("mbbill/undotree")
 	-- install without yarn or npm
