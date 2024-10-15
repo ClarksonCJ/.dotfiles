@@ -32,7 +32,6 @@ return require("packer").startup(function(use)
 	})
 
 	use('lukas-reineke/indent-blankline.nvim') -- Add indentation guides even on blank lines
-	use('numToStr/Comment.nvim') -- "gc" to comment visual regions/lines
 	use('tpope/vim-sleuth') -- Detect tabstop and shiftwidth automatically
 	use('tpope/vim-fugitive')
 	use('tpope/vim-rhubarb')
@@ -71,6 +70,7 @@ return require("packer").startup(function(use)
 	}
 
 	use "akinsho/toggleterm.nvim"
+
 
 	-- Primeagen doesn"t create lodash
 	use("ThePrimeagen/git-worktree.nvim")
@@ -118,6 +118,14 @@ return require("packer").startup(function(use)
 	use("theHamsta/nvim-dap-virtual-text")
 
 	use('folke/zen-mode.nvim')
+	use('folke/todo-comments.nvim')
+	use('folke/trouble.nvim')
+	use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
 	use('github/copilot.vim')
 
 	-- Golang Plugins

@@ -31,6 +31,7 @@ lsp_zero.setup()
 local lsp_servers = {
     'ansiblels',
     'bashls',
+    'codelldb',
     'dockerls',
     'eslint',
     'gopls',
@@ -39,7 +40,9 @@ local lsp_servers = {
     'marksman',
     'pylsp',
     'pyright',
+    'regal',
     'tsserver',
+    'ts_ls',
     'terraformls',
     'vimls',
     'yamlls',
@@ -201,6 +204,19 @@ require('mason-lspconfig').setup({
                                 ignore = {'E226', 'E266', 'E302', 'E303', 'E304', 'E305', 'E402', 'C0103', 'W0104', 'W0621', 'W391', 'W503', 'W504'},
                                 maxLineLength = 99,
                             },
+                        },
+                    },
+                },
+            })
+        end,
+        regal = function()
+            lspconfig.regal.setup({
+                capabilities = capabilities,
+                settings = {
+                    regal = {
+                        diagnostics = {
+                            enable = true,
+                            severity = "error",
                         },
                     },
                 },

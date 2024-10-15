@@ -1,6 +1,7 @@
 package ansible
 package asdf
 package autojump
+package bang-bang
 package bass
 package brew
 package docker-machine

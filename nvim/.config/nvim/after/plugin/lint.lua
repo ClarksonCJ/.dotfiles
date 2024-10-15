@@ -18,6 +18,7 @@ null_ls.setup({
             timeout = 30000,
             method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
         }),
+        null_ls.builtins.diagnostics.regal,
         null_ls.builtins.diagnostics.tfsec,
         null_ls.builtins.diagnostics.selene,
     },

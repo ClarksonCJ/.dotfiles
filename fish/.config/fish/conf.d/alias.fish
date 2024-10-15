@@ -11,6 +11,7 @@ alias k=kubectl
 
 alias cat=bat
 alias curl=curlie
+alias exa=eza
 alias disable_screen='xrandr --output DP-3 --off'
 alias enable_screen='autorandr --change'
 

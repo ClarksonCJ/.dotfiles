@@ -16,3 +16,8 @@ set -x GOENV_SHELL fish
 if test ! -d "$goenv_root/shims"; or test ! -d "$goenv_root/versions"
     command mkdir -p $goenv_root/{shims,versions}
 end
+
+# Preferred Golang path Setup
+set -x GOPATH (go env GOPATH)
+set -x GOBIN (go env GOPATH)/bin
+fish_add_path $GOBIN

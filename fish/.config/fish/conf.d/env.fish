@@ -9,7 +9,6 @@ if [ -d ~/.asdf ]
   end
 end
 [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc' ]; and source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
-source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 # Execute Env Setup scripts
 eval (env SHELL=fish /opt/homebrew/bin/brew shellenv)

@@ -3,6 +3,7 @@
 # Preferred editor for local and remote sessions
   set -gx EDITOR 'nvim'
 
+
 # PATH
 set -gx MANPATH $MANPATH "/usr/local/man"
 set -gx MANPATH $MANPATH "/usr/local/opt/coreutils/libexec/gnuman"
@@ -10,7 +11,6 @@ set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.krew/bin
 fish_add_path $HOME/.cargo/bin
-fish_add_path $GOBIN
 
 set -gx GIT_MERGE_AUTOCOMMIT no
 set -gx LS_COLORS "di 34 ln 35 so 32 pi 33 ex 31 bd 34;46 cd 34 su 0 sg 0 tw 0 ow 0 "
@@ -40,4 +40,4 @@ set -gx GPGKEY D8741D6669D293B72A9BCBD7DA98F409BE00FF22
 
 # start Roku specific settings
 set -gx GOPROXY https://docker-dev.artifactory.tools.roku.com/artifactory/api/go/go
-set -gx GOSUMDB gitlang.eng.roku.com
+set -gx GOSUMDB gitlab.eng.roku.com
