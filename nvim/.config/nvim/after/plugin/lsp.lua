@@ -41,7 +41,7 @@ local lsp_servers = {
     'pylsp',
     'pyright',
     'regal',
-    'tsserver',
+    'ts_server',
     'ts_ls',
     'terraformls',
     'vimls',

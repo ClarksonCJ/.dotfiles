@@ -1,0 +1,72 @@
+# Bash function to connect to an AWS EC2 instance
+function connect_to_ec2_instance() {
+  # Get the Instance ID of the selected instance
+  INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].{InstanceId:InstanceId,Name:Tags[?Key=='Name'].Value|[0]}" --output json | jq -r '.[] | .[] | "\(.Name) \(.InstanceId)"' | fzf --with-nth=1 --delimiter=" " | awk '{print $2}')
+
+  # Check if an instance ID was selected
+  if [ -z "$INSTANCE_ID" ]; then
+    echo "No instance selected."
+    return 1
+  fi
+
+  # Establish a session connection using the AWS CLI
+  aws ssm start-session --target "$INSTANCE_ID"
+}
+
+# Fish shell function to connect to a GCP instance
+function connect_to_gcp_instance
+  # Get the Instance ID and Name of the selected instance
+  set instance_info (gcloud compute instances list --filter="status=RUNNING" --format="json" | jq -r '.[] | "\(.name) \(.id)"' | fzf --with-nth=1 --delimiter=" ")
+
+  # Extract the Instance ID and Name
+  set instance_name (echo $instance_info | awk '{print $1}')
+  set instance_id (echo $instance_info | awk '{print $2}')
+
+  # Check if an instance was selected
+  if test -z "$instance_id"
+    echo "No instance selected."
+    return 1
+  end
+
+  # Establish an SSH connection to the selected instance
+  gcloud compute ssh $instance_name
+end
+
+# Zsh function to connect to a GCP instance
+function connect_to_gcp_instance() {
+  # Get the Instance ID and Name of the selected instance
+  instance_info=$(gcloud compute instances list --filter="status=RUNNING" --format="json" | jq -r '.[] | "\(.name) \(.id)"' | fzf --with-nth=1 --delimiter=" ")
+
+  # Extract the Instance ID and Name
+  instance_name=$(echo $instance_info | awk '{print $1}')
+  instance_id=$(echo $instance_info | awk '{print $2}')
+
+  # Check if an instance was selected
+  if [ -z "$instance_id" ]; then
+    echo "No instance selected."
+    return 1
+  fi
+
+  # Establish an SSH connection to the selected instance
+  gcloud compute ssh $instance_name
+}
+
+# Fish shell function to connect to a GCP instance via IAP
+function connect_to_gcp_instance_via_iap
+  # Get the Instance ID and Name of the selected instance
+  set instance_info (gcloud compute instances list --filter="status=RUNNING" --format="json" | jq -r '.[] | "\(.name) \(.zone)"' | fzf --with-nth=1 --delimiter=" ")
+
+  # Extract the Instance Name and Zone
+  set instance_name (echo $instance_info | awk '{print $1}')
+  set instance_zone (echo $instance_info | awk '{print $2}')
+
+  # Check if an instance was selected
+  if test -z "$instance_name"
+    echo "No instance selected."
+    return 1
+  end
+
+  # Establish an SSH connection to the selected instance via IAP
+  gcloud compute ssh $instance_name --zone $instance_zone --tunnel-through-iap
+end
+
