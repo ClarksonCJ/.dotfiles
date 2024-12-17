@@ -56,5 +56,5 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dFFCC66
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/Users/cclarkson/go/1\x2e23\x2e1/bin\x1e/Users/cclarkson/go/1\x2e23\x2e0/bin\x1e/Users/cclarkson/\x2ecargo/bin\x1e/Users/cclarkson/\x2ekrew/bin\x1e/Users/cclarkson/\x2elocal/bin\x1e/Users/cclarkson/\x2easdf/shims\x1e/Users/cclarkson/\x2easdf/bin\x1e/opt/homebrew/bin\x1e/usr/local/bin\x1e/Users/chris/\x2ecargo/bin\x1e/Users/chris/\x2elocal/bin\x1e/Users/chris\x2eclarkson/\x2ecargo/bin\x1e/Users/chris\x2eclarkson/\x2elocal/bin\x1e/opt/homebrew/opt/fzf/bin
+SETUVAR fish_user_paths:/Users/cclarkson/go/1\x2e23\x2e4/bin\x1e/Users/cclarkson/go/1\x2e23\x2e1/bin\x1e/Users/cclarkson/go/1\x2e23\x2e0/bin\x1e/Users/cclarkson/\x2ecargo/bin\x1e/Users/cclarkson/\x2ekrew/bin\x1e/Users/cclarkson/\x2elocal/bin\x1e/Users/cclarkson/\x2easdf/shims\x1e/Users/cclarkson/\x2easdf/bin\x1e/opt/homebrew/bin\x1e/usr/local/bin\x1e/Users/chris/\x2ecargo/bin\x1e/Users/chris/\x2elocal/bin\x1e/Users/chris\x2eclarkson/\x2ecargo/bin\x1e/Users/chris\x2eclarkson/\x2elocal/bin\x1e/opt/homebrew/opt/fzf/bin
 SETUVAR nvm_default_version:v22\x2e4\x2e0
