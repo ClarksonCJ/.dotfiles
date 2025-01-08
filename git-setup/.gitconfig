@@ -16,17 +16,23 @@
 [diff]
 	colorMoved = default
 
-[includeIf "gitdir:~/personal/"]
-	path = ~/personal/.gitconfig
-
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 
-[includeIf "gitdir:~/workspace/"]
-	path = ~/workspace/.gitconfig
+[includeIf "gitdir:~/workspace/AwazeVR/"]
+	path = ~/workspace/AwazeVR/.gitconfig
 
-[url "ssh://git@gitlab.eng.roku.com/"]
-	insteadOf = https://gitlab.eng.roku.com/
+[includeIf "gitdir:~/personal/"]
+	path = ~/personal/.gitconfig
+
+[includeIf "gitdir:~/Projects/"]
+    path = ~/Projects/.gitconfig
+
+[commit]
+    gpgsign = true
+
+[tag]
+    gpgsign = true
 
 [color]
 	ui = true
