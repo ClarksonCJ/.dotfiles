@@ -3,5 +3,7 @@ bin/.local/bin/kubectl
 bin/.local/bin/cyclonedx-cli
 bin/.local/share
 bin/.local/state
-**/local*
+**/.local*
+
 nvim/.config/nvim/plugin/packer_compiled.lua
+.DS_Store

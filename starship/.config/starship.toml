@@ -21,7 +21,9 @@ disabled = true
 disabled = true
 
 [docker_context]
+disabled = true
 format = 'via [🐋 $context](blue bold) '
+
 
 [git_branch]
 symbol = '🌱 '

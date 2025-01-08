@@ -1,13 +1,12 @@
 package ansible
 package asdf
 package autojump
+package bang-bang
 package bass
 package brew
 package docker-machine
 package extract
 package fzf
-package gh
-package pbcopy
 package rustup
 package z
 theme lambda

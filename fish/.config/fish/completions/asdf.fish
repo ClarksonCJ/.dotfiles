@@ -1,1 +1,1 @@
-/Users/chris/.asdf/completions/asdf.fish
+/Users/cclarkson/.asdf/completions/asdf.fish

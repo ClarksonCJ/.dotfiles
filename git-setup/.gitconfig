@@ -16,17 +16,17 @@
 [diff]
 	colorMoved = default
 
+[includeIf "gitdir:~/personal/"]
+	path = ~/personal/.gitconfig
+
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 
-[user]
-	name = Chris Clarkson
-	email = chris.clarkson@skyral.io
-	signingkey = C05B7673
+[includeIf "gitdir:~/workspace/"]
+	path = ~/workspace/.gitconfig
 
-
-[commit]
-	gpgsign = true
+[url "ssh://git@gitlab.eng.roku.com/"]
+	insteadOf = https://gitlab.eng.roku.com/
 
 [color]
 	ui = true
@@ -78,3 +78,5 @@
 
 	# Display all the git aliases
 	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+[push]
+	autoSetupRemote = true
