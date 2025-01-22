@@ -19,14 +19,14 @@
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 
-[includeIf "gitdir:~/workspace/AwazeVR/"]
-	path = ~/workspace/AwazeVR/.gitconfig
+[includeIf "gitdir/i:~/workspace/awazevr/"]
+	path = ~/workspace/awazevr/.gitconfig
 
-[includeIf "gitdir:~/personal/"]
+[includeIf "gitdir/i:~/personal/"]
 	path = ~/personal/.gitconfig
 
-[includeIf "gitdir:~/Projects/"]
-    path = ~/Projects/.gitconfig
+[includeIf "gitdir/i:~/projects/"]
+    path = ~/projects/.gitconfig
 
 [commit]
     gpgsign = true
