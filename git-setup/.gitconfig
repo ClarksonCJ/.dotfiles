@@ -28,6 +28,12 @@
 [includeIf "gitdir/i:~/projects/"]
     path = ~/projects/.gitconfig
 
+[includeIf "gitdir/i:~/workspace/digital-select-asterisk/"]
+	path = ~/workspace/.gitconfig
+
+[includeIf "gitdir/i:~/workspace/caxa-technologies/"]
+	path = ~/workspace/.gitconfig
+
 [commit]
     gpgsign = true
 

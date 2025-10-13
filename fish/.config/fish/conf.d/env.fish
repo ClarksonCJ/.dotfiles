@@ -1,6 +1,5 @@
 #!/bin/fish
 
-
 # Source shell files to setup environment
 if [ -d ~/.asdf ]
     source ~/.asdf/asdf.fish
@@ -21,3 +20,6 @@ status --is-interactive; and pyenv virtualenv-init - | source
 
 direnv hook fish | source
 kubectl completion fish | source
+#
+# Generated for pdtm. Do not edit.
+fish_add_path /Users/chris/.pdtm/go/bin

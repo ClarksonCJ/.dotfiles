@@ -1,4 +1,4 @@
-fish_add_path /usr/local/bin 
+fish_add_path /usr/local/bin
 fish_add_path /opt/homebrew/bin
 
 # Paths to your tackle
@@ -37,7 +37,6 @@ set tacklebox_path ~/.tackle ~/.tacklebox
 # Load Tacklebox configuration
 . ~/.tacklebox/tacklebox.fish
 
-
 # Paths to your tackle
 set tacklebox_path ~/.tackle ~/.tacklebox
 
@@ -54,4 +53,8 @@ set tacklebox_path ~/.tackle ~/.tacklebox
 
 # Load Tacklebox configuration
 . ~/.tacklebox/tacklebox.fish
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/chris/.lmstudio/bin
+# End of LM Studio CLI section
 
