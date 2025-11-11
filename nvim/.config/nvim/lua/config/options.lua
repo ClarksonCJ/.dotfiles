@@ -30,3 +30,14 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "120"
 vim.g.lazyvim_picker = "telescope"
+
+-- Python Settings
+vim.g.lazyvim_python_lsp = "pyright"
+vim.g.lazyvim_python_ruff = "ruff"
+
+--Ruby Settings
+vim.g.lazyvim_ruby_lsp = "ruby_lsp"
+vim.g.lazyvim_ruby_formatter = "rubocop"
+
+-- Rust Settings
+vim.g.lazyvim_rust_lsp = "rust_analyzer"
