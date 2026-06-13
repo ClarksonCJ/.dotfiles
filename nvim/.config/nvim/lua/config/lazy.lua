@@ -31,7 +31,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.zig" },
 
 		-- Plugins for Editor
-		{ import = "lazyvim.plugins.extras.ai.copilot" },
+		{ import = "lazyvim.plugins.extras.ai.claudecode" },
 		{ import = "lazyvim.plugins.extras.coding.blink" },
 		{ import = "lazyvim.plugins.extras.coding.luasnip" },
 		{ import = "lazyvim.plugins.extras.coding.yanky" },

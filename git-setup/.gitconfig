@@ -34,6 +34,10 @@
 [includeIf "gitdir/i:~/workspace/caxa-technologies/"]
 	path = ~/workspace/.gitconfig
 
+[includeIf "gitdir/i:~/OneDrive - CAXA Technologies Ltd/CAXA Technologies/Content/"]
+    path = ~/workspace/.gitconfig
+
+
 [commit]
     gpgsign = true
 

@@ -10,7 +10,6 @@ return {
 				"ansible-language-server",
 				"bash-language-server",
 				"css-lsp",
-				"copilot-language-server",
 				"dockerfile-language-server",
 				"eslint-lsp",
 				"gopls",
