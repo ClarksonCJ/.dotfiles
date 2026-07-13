@@ -53,8 +53,3 @@ set tacklebox_path ~/.tackle ~/.tacklebox
 
 # Load Tacklebox configuration
 . ~/.tacklebox/tacklebox.fish
-
-# Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/chris/.lmstudio/bin
-# End of LM Studio CLI section
-
